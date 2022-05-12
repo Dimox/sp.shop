@@ -1,369 +1,278 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<!-- Front-end by sborkaproject.com -->
-		<meta charset="utf-8" />
-		<title>Project</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-			<script type="text/javascript">
-		;(function(){
-			var modificators = [],
-				nv = navigator,
-				pl = nv.platform.toLowerCase(),
-				ua = nv.userAgent.toLowerCase(),
-				an = nv.appName.toLowerCase(),
-				htmlElement = document.documentElement,
-				ls = localStorage;
-
-			function pli(s){return pl.indexOf(s) > -1;}
-			function uai(s){return ua.indexOf(s) > -1;}
-			function ani(s){return an.indexOf(s) > -1;}
-
-			// Platform
-			var platformClass = uai('iphone') || uai('ipod') || uai('ipad') || uai('android') || uai('iemobile') || uai('blackberry') || uai('bada') ? '_mobile' : '_desktop';
-			modificators.push(platformClass);
-
-			// OS
-			var osClass = '';
-			if (uai('ipad') || uai('iphone') || uai('ipod')) {
-				osClass = '_ios';
-			} else if (uai('android')) {
-				osClass = '_android';
-			} else if (pli('win')) {
-				osClass = '_win';
-			} else if (pli('mac')) {
-				osClass = '_mac';
-			} else if (pli('linux')) {
-				osClass = '_linux';
-			}
-			modificators.push(osClass);
-
-			// Browser
-			var browserClass = '';
-			if (uai('firefox')) {
-				browserClass = '_ff';
-			} else if (uai('opr')) {
-				browserClass = '_opera';
-			} else if (uai('yabrowser')) {
-				browserClass = '_yandex';
-			} else if (uai('edge')) {
-				browserClass = '_edge';
-			} else if (uai('trident') || ani('explorer') || ani('msie')) {
-				browserClass = '_ie';
-			} else if (uai('safari') && !uai('chrome')) {
-				browserClass = '_safari';
-			} else if (uai('chrome')) {
-				browserClass = '_chrome';
-			}
-			modificators.push(browserClass);
-
-			window.environmentObject = {
-				platform: platformClass,
-				os: osClass,
-				browser: browserClass,
-				isLocal: window.location.href.indexOf('http://localhost:') == 0
-			};
-			htmlElement.className += ' ' + modificators.join(' ');
-
-			// SVG sprites
-			var xhr = new XMLHttpRequest();
-			xhr.open('GET', 'assets/svg/sprite.svg', true);
-			xhr.overrideMimeType('image/svg+xml');
-
-			xhr.onreadystatechange = function(){
-				if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-					function waitForBody(){
-						if(document.body){
-							var containerClass = 'invisible-container';
-							var container = document.querySelector('.'+containerClass);
-							if(!container){
-								container = document.createElement('div');
-								container.className = containerClass;
-								document.body.insertBefore(container, document.body.firstChild);
-							}
-							container.appendChild(xhr.responseXML.documentElement);
-						} else {
-							setTimeout(waitForBody, 16);
-						}
-					}
-
-					waitForBody();
-				};
-			}
-
-			xhr.send('');
-		})();
-	</script>
-
-
-			<link rel="stylesheet" href="assets/css/styles.css?hash" />
-	</head>
-	<body>
-
-		<div class="wrapper">
-
-<header class="header">
-
-	<a class="" href="#">
-			<svg class="header__logo" width="89" height="32">
-		<use xlink:href="#icon-logo" />
-	</svg>
-
-	</a>
-
-		<nav class="menu">
-		<ul class="menu__list">
-				<li class="menu__item">
-					<a href="#" class="menu__link _active">Women’s</a>
-				</li>
-				<li class="menu__item">
-					<a href="#" class="menu__link _active">Men’s</a>
-				</li>
-				<li class="menu__item">
-					<a href="#" class="menu__link _active">Home</a>
-				</li>
-				<li class="menu__item">
-					<a href="#" class="menu__link _active">Travel</a>
-				</li>
-				<li class="menu__item">
-					<a href="#" class="menu__link _active">Beauty</a>
-				</li>
-				<li class="menu__item">
-					<a href="#" class="menu__link _active">Sale</a>
-				</li>
-		</ul>
-	</nav>
-
-
-	<div class="header__buttons">
-		<button class="header__search" type="button">
-				<svg width="24" height="24">
-		<use xlink:href="#icon-search" />
-	</svg>
-
-		</button>
-
-		<button class="header__cart" type="button">
-				<svg width="24" height="21">
-		<use xlink:href="#icon-cart" />
-	</svg>
-
-			<span class="header__cart-counter">2</span>
-		</button>
-
-		<button class="header__burger" type="button">
-				<svg width="29" height="22">
-		<use xlink:href="#icon-burger" />
-	</svg>
-
-		</button>
-	</div>
-
-</header>
-
-	<main class="middle">
-
-		<div class="content">
-<ol class="steps">
-	<li class="steps__item steps__item--filled">Account</li>
-	<li class="steps__item steps__item--filled">Shipping</li>
-	<li class="steps__item steps__item--active">Billing</li>
-	<li class="steps__item">Review</li>
-</ol>
-<section class="billing">
-
-	<h2 class="title billing__title">Billing Information</h2>
-
-	<form class="billing__form" method="post" action="/">
-
-		<ul class="billing__type">
-			<li class="billing__type-item">
-				<label class="radio">
-	<input class="visually-hidden radio__input" type="radio" name="type" checked>
-	<span class="radio__state"></span>
-		<span class="radio__text">Pay with Credit Card</span>
-</label>
-
-			</li>
-			<li class="billing__type-item">
-				<label class="radio">
-	<input class="visually-hidden radio__input" type="radio" name="type">
-	<span class="radio__state"></span>
-			<svg class="radio__icon" width="85" height="23">
-		<use xlink:href="#icon-paypal" />
-	</svg>
-
-</label>
-
-			</li>
-		</ul>
-
-<div class="card">
-	<div class="card__row">
-		<label class="label" for="card-name">Name on card</label>
-		<input class="i-text" id="card-name" type="text" placeholder="Placeholder Text" />
-	</div>
-
-	<div class="card__row">
-		<label class="label" for="card-number">Card number</label>
-		<div class="card__number">
-			<input class="i-text card__number-input" id="card-number" type="number" />
-			<input class="i-text card__number-input" type="number" />
-			<input class="i-text card__number-input" type="number" />
-			<input class="i-text card__number-input" type="number" />
-		</div>
-	</div>
-
-	<div class="card__row">
-		<div class="card__date">
-			<label class="label" for="card-date">Expire date</label>
-			<input class="i-text" id="card-date" type="text" />
-		</div>
-		<div class="card__code">
-			<label class="label" for="card-code">
-				CVV code
-				<span class="tooltip">?</span>
-			</label>
-			<input class="i-text" id="card-code" type="number" />
-		</div>
-	</div>
-</div>
-
-		<div class="billing__accepts">
-			<label class="checkbox billing__checkbox">
-	<input class="visually-hidden checkbox__input" type="checkbox" name="type" checked>
-	<span class="checkbox__state"></span>
-	<span class="checkbox__text">Save information of this credit card</span>
-</label>
-
-			<label class="checkbox billing__checkbox">
-	<input class="visually-hidden checkbox__input" type="checkbox" name="type">
-	<span class="checkbox__state"></span>
-	<span class="checkbox__text">I accept the <a class="" href="#">terms and comditions</a> and the <a class="" href="#">Privacy Policies</a></span>
-</label>
-
-		</div>
-
-		<div class="billing__buttons">
-			<button class="button button--outline" type="button">Back</button>
-			<button class="button" type="submit">Check Out</button>
-		</div>
-	</form>
-
-</section>
-		</div><!-- .content -->
-
-<sidebar class="sidebar">
-
-	<section class="basket sidebar__section">
-
-	<h2 class="title basket__title">My basket</h2>
-
-		<div class="basket__item">
-			<img class="basket__item-image" src="assets/images/image-1.jpg" srcset="assets/images/image-1_2x.jpg 2x" width="100" height="100" alt="Amet minim mollit non deserunt ullamco est sit">
-			<div class="basket__item-inner">
-				<p class="basket__item-title">Amet minim mollit non deserunt ullamco est sit</p>
-
-<div class="quantity">
-	<button class="quantity__minus" type="button" aria-label="-1">
-			<svg width="21" height="20">
-		<use xlink:href="#icon-minus" />
-	</svg>
-
-	</button>
-	<div class="quantity__number">1</div>
-	<button class="quantity__plus" type="button" aria-label="+1">
-			<svg width="21" height="20">
-		<use xlink:href="#icon-plus" />
-	</svg>
-
-	</button>
-</div>
-				<p class="basket__item-price" data-price="525">$ <span class="basket__item-amount">525</span></p>
-			</div>
-			<button class="basket__item-remove" type="button">
-					<svg width="19" height="18">
-		<use xlink:href="#icon-close" />
-	</svg>
-
-			</button>
-		</div>
-		<div class="basket__item">
-			<img class="basket__item-image" src="assets/images/image-2.jpg" srcset="assets/images/image-2_2x.jpg 2x" width="100" height="100" alt="Amet minim mollit non">
-			<div class="basket__item-inner">
-				<p class="basket__item-title">Amet minim mollit non</p>
-
-<div class="quantity">
-	<button class="quantity__minus" type="button" aria-label="-1">
-			<svg width="21" height="20">
-		<use xlink:href="#icon-minus" />
-	</svg>
-
-	</button>
-	<div class="quantity__number">1</div>
-	<button class="quantity__plus" type="button" aria-label="+1">
-			<svg width="21" height="20">
-		<use xlink:href="#icon-plus" />
-	</svg>
-
-	</button>
-</div>
-				<p class="basket__item-price" data-price="525">$ <span class="basket__item-amount">525</span></p>
-			</div>
-			<button class="basket__item-remove" type="button">
-					<svg width="19" height="18">
-		<use xlink:href="#icon-close" />
-	</svg>
-
-			</button>
-		</div>
-
-</section>
-
-
-	<section class="promo-code sidebar__section">
-
-	<h2 class="title promo-code__title">Promo code</h2>
-
-	<form class="promo-code__form" method="post" action="/">
-		<label class="visually-hidden" for="promo-code">Placeholder Text</label>
-		<input class="i-text promo-code__input" id="promo-code" type="text" placeholder="Placeholder Text" />
-		<button class="button" type="submit">Apply</button>
-	</form>
-
-</section>
-
-
-	<section class="amount sidebar__section">
-	<table class="amount__table">
-		<tr>
-			<td>Subtotal</td>
-			<td class="amount__right">$<span class="amount__subtotal">1 050</span></td>
-		</tr>
-		<tr>
-			<td>Tax</td>
-			<td class="amount__right">$<span class="amount__tax">100</span></td>
-		</tr>
-		<tr>
-			<td>Shipping</td>
-			<td class="amount__right">$<span class="amount__shipping">150</span></td>
-		</tr>
-		<tr>
-			<td class="amount__total">Total</td>
-			<td class="amount__total amount__right">$<span class="amount__total-number">1 300</span></td>
-		</tr>
-	</table>
-</section>
-
-
-</sidebar>
-
-	</main>
-
-
-		</div>
-
-			<script src="assets/js/bundle.js?hash"></script>
-	</body>
+
+<head>
+    <!-- Front-end by sborkaproject.com -->
+    <meta charset="utf-8" />
+    <title>Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <script type="text/javascript">!function(){function e(e){return r.indexOf(e)>-1}function o(e){return a.indexOf(e)>-1}function n(e){return s.indexOf(e)>-1}var i=[],t=navigator,r=t.platform.toLowerCase(),a=t.userAgent.toLowerCase(),s=t.appName.toLowerCase(),d=document.documentElement,c=(localStorage,o("iphone")||o("ipod")||o("ipad")||o("android")||o("iemobile")||o("blackberry")||o("bada")?"_mobile":"_desktop");i.push(c);var m="";o("ipad")||o("iphone")||o("ipod")?m="_ios":o("android")?m="_android":e("win")?m="_win":e("mac")?m="_mac":e("linux")&&(m="_linux"),i.push(m);var u="";o("firefox")?u="_ff":o("opr")?u="_opera":o("yabrowser")?u="_yandex":o("edge")?u="_edge":o("trident")||n("explorer")||n("msie")?u="_ie":o("safari")&&!o("chrome")?u="_safari":o("chrome")&&(u="_chrome"),i.push(u),window.environmentObject={platform:c,os:m,browser:u,isLocal:0==window.location.href.indexOf("http://localhost:")},d.className+=" "+i.join(" ");var l=new XMLHttpRequest;l.open("GET","assets/svg/sprite.svg",!0),l.overrideMimeType("image/svg+xml"),l.onreadystatechange=function(){function e(){if(document.body){var o=document.querySelector(".invisible-container");o||(o=document.createElement("div"),o.className="invisible-container",document.body.insertBefore(o,document.body.firstChild)),o.appendChild(l.responseXML.documentElement)}else setTimeout(e,16)}l.readyState===XMLHttpRequest.DONE&&200===l.status&&e()},l.send("")}();</script>
+
+    <link rel="stylesheet" href="assets/css/styles.css?bf0c6025f69b9e8abf2b394ce855c385" />
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <header class="header">
+
+            <a class="" href="#">
+                <svg class="header__logo" width="89" height="32">
+                    <use xlink:href="#icon-logo" />
+                </svg>
+
+            </a>
+
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__item">
+                        <a href="#" class="menu__link _active">Women’s</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#" class="menu__link _active">Men’s</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#" class="menu__link _active">Home</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#" class="menu__link _active">Travel</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#" class="menu__link _active">Beauty</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#" class="menu__link _active">Sale</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header__buttons">
+                <button class="header__search" type="button">
+                    <svg width="24" height="24">
+                        <use xlink:href="#icon-search" />
+                    </svg>
+
+                </button>
+
+                <button class="header__cart" type="button">
+                    <svg width="24" height="21">
+                        <use xlink:href="#icon-cart" />
+                    </svg>
+
+                    <span class="header__cart-counter">2</span>
+                </button>
+
+                <button class="header__burger" type="button">
+                    <svg width="29" height="22">
+                        <use xlink:href="#icon-burger" />
+                    </svg>
+
+                </button>
+            </div>
+
+        </header>
+
+        <main class="middle">
+
+            <div class="content">
+                <ol class="steps">
+                    <li class="steps__item steps__item--filled">Account</li>
+                    <li class="steps__item steps__item--filled">Shipping</li>
+                    <li class="steps__item steps__item--active">Billing</li>
+                    <li class="steps__item">Review</li>
+                </ol>
+                <section class="billing">
+
+                    <h2 class="title billing__title">Billing Information</h2>
+
+                    <form class="billing__form" method="post" action="/">
+
+                        <ul class="billing__type">
+                            <li class="billing__type-item">
+                                <label class="radio">
+                                    <input class="visually-hidden radio__input" type="radio" name="type" checked>
+                                    <span class="radio__state"></span>
+                                    <span class="radio__text">Pay with Credit Card</span>
+                                </label>
+
+                            </li>
+                            <li class="billing__type-item">
+                                <label class="radio">
+                                    <input class="visually-hidden radio__input" type="radio" name="type">
+                                    <span class="radio__state"></span>
+                                    <svg class="radio__icon" width="85" height="23">
+                                        <use xlink:href="#icon-paypal" />
+                                    </svg>
+
+                                </label>
+
+                            </li>
+                        </ul>
+
+                        <div class="card">
+                            <div class="card__row">
+                                <label class="label" for="card-name">Name on card</label>
+                                <input class="i-text" id="card-name" type="text" placeholder="Placeholder Text" />
+                            </div>
+
+                            <div class="card__row">
+                                <label class="label" for="card-number">Card number</label>
+                                <div class="card__number">
+                                    <input class="i-text card__number-input" id="card-number" type="number" />
+                                    <input class="i-text card__number-input" type="number" />
+                                    <input class="i-text card__number-input" type="number" />
+                                    <input class="i-text card__number-input" type="number" />
+                                </div>
+                            </div>
+
+                            <div class="card__row">
+                                <div class="card__date">
+                                    <label class="label" for="card-date">Expire date</label>
+                                    <input class="i-text" id="card-date" type="text" />
+                                </div>
+                                <div class="card__code">
+                                    <label class="label" for="card-code">
+                                        CVV code
+                                        <span class="tooltip">?</span>
+                                    </label>
+                                    <input class="i-text" id="card-code" type="number" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="billing__accepts">
+                            <label class="checkbox billing__checkbox">
+                                <input class="visually-hidden checkbox__input" type="checkbox" name="type" checked>
+                                <span class="checkbox__state"></span>
+                                <span class="checkbox__text">Save information of this credit card</span>
+                            </label>
+
+                            <label class="checkbox billing__checkbox">
+                                <input class="visually-hidden checkbox__input" type="checkbox" name="type">
+                                <span class="checkbox__state"></span>
+                                <span class="checkbox__text">I accept the <a class="" href="#">terms and comditions</a> and the <a class="" href="#">Privacy Policies</a></span>
+                            </label>
+
+                        </div>
+
+                        <div class="billing__buttons">
+                            <button class="button button--outline" type="button">Back</button>
+                            <button class="button" type="submit">Check Out</button>
+                        </div>
+                    </form>
+
+                </section>
+            </div><!-- .content -->
+
+            <sidebar class="sidebar">
+
+                <section class="basket sidebar__section">
+
+                    <h2 class="title basket__title">My basket</h2>
+
+                    <div class="basket__item">
+                        <img class="basket__item-image" src="assets/images/image-1.jpg" srcset="assets/images/image-1_2x.jpg 2x" width="100" height="100" alt="Amet minim mollit non deserunt ullamco est sit">
+                        <div class="basket__item-inner">
+                            <p class="basket__item-title">Amet minim mollit non deserunt ullamco est sit</p>
+
+                            <div class="quantity">
+                                <button class="quantity__minus" type="button" aria-label="-1">
+                                    <svg width="21" height="20">
+                                        <use xlink:href="#icon-minus" />
+                                    </svg>
+
+                                </button>
+                                <div class="quantity__number">1</div>
+                                <button class="quantity__plus" type="button" aria-label="+1">
+                                    <svg width="21" height="20">
+                                        <use xlink:href="#icon-plus" />
+                                    </svg>
+
+                                </button>
+                            </div>
+                            <p class="basket__item-price" data-price="525">$ <span class="basket__item-amount">525</span></p>
+                        </div>
+                        <button class="basket__item-remove" type="button">
+                            <svg width="19" height="18">
+                                <use xlink:href="#icon-close" />
+                            </svg>
+
+                        </button>
+                    </div>
+                    <div class="basket__item">
+                        <img class="basket__item-image" src="assets/images/image-2.jpg" srcset="assets/images/image-2_2x.jpg 2x" width="100" height="100" alt="Amet minim mollit non">
+                        <div class="basket__item-inner">
+                            <p class="basket__item-title">Amet minim mollit non</p>
+
+                            <div class="quantity">
+                                <button class="quantity__minus" type="button" aria-label="-1">
+                                    <svg width="21" height="20">
+                                        <use xlink:href="#icon-minus" />
+                                    </svg>
+
+                                </button>
+                                <div class="quantity__number">1</div>
+                                <button class="quantity__plus" type="button" aria-label="+1">
+                                    <svg width="21" height="20">
+                                        <use xlink:href="#icon-plus" />
+                                    </svg>
+
+                                </button>
+                            </div>
+                            <p class="basket__item-price" data-price="525">$ <span class="basket__item-amount">525</span></p>
+                        </div>
+                        <button class="basket__item-remove" type="button">
+                            <svg width="19" height="18">
+                                <use xlink:href="#icon-close" />
+                            </svg>
+
+                        </button>
+                    </div>
+
+                </section>
+
+                <section class="promo-code sidebar__section">
+
+                    <h2 class="title promo-code__title">Promo code</h2>
+
+                    <form class="promo-code__form" method="post" action="/">
+                        <label class="visually-hidden" for="promo-code">Placeholder Text</label>
+                        <input class="i-text promo-code__input" id="promo-code" type="text" placeholder="Placeholder Text" />
+                        <button class="button" type="submit">Apply</button>
+                    </form>
+
+                </section>
+
+                <section class="amount sidebar__section">
+                    <table class="amount__table">
+                        <tr>
+                            <td>Subtotal</td>
+                            <td class="amount__right">$<span class="amount__subtotal">1 050</span></td>
+                        </tr>
+                        <tr>
+                            <td>Tax</td>
+                            <td class="amount__right">$<span class="amount__tax">100</span></td>
+                        </tr>
+                        <tr>
+                            <td>Shipping</td>
+                            <td class="amount__right">$<span class="amount__shipping">150</span></td>
+                        </tr>
+                        <tr>
+                            <td class="amount__total">Total</td>
+                            <td class="amount__total amount__right">$<span class="amount__total-number">1 300</span></td>
+                        </tr>
+                    </table>
+                </section>
+
+            </sidebar>
+
+        </main>
+
+    </div>
+
+    <script src="assets/js/bundle.js?d0cb3ee8ad82a2ee041f9cba20c0e712"></script>
+</body>
+
 </html>

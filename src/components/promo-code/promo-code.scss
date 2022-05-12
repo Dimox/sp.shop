@@ -1,0 +1,14 @@
+.promo-code__form {
+	display: flex;
+}
+
+.promo-code__title {
+	margin-bottom: 30px;
+}
+
+.promo-code__input {
+	flex-grow: 1;
+	flex-basis: 0;
+	min-width: 0;
+	margin-right: 10px;
+}

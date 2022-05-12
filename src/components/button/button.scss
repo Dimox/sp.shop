@@ -1,35 +1,30 @@
 .button {
-	@extend .transition-active;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 2px solid rgba(#000, 0.3);
-	height: 54px;
-	font-weight: 700;
+	border: none;
+	height: 40px;
+	padding: 0 30px;
+	background: $color-primary;
+	border-radius: 3px;
+	font-size: inherit;
+	color: #fff;
 	cursor: pointer;
-	font-size: 16px;
-	letter-spacing: -0.5px;
-	padding: 1px 20px 0;
+	transition: 0.25s;
 
 	&:hover {
-		background-color: rgba(#000, 0.3);
-		color: rgba(#000, 0.8);
-		transition: none;
+		background-color: mix($color-primary, #fff, 85%);
 	}
 
-	&:active {
-		background-color: rgba(#000, 0.25);
-		border-color: rgba(#000, 0.25);
+	&--outline {
+		background: none;
+		border: 1px solid $color-gray;
+		color: $color-black;
 
-		.button__chevron-right {
-			transform: translateX(1px);
-			transition: none;
+		&:hover {
+			border-color: $color-primary;
+			background: $color-primary;
+			color: $color-white;
 		}
-	}
-
-	&__chevron-right {
-		margin-left: 5px;
-		transition: transform 0.1s ease-out,
-			fill $default-transition-duration $default-transition-function;
 	}
 }

@@ -1,0 +1,35 @@
+.checkbox {
+	position: relative;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.checkbox__state {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	border: 1px solid $color-gray;
+	background: #fff;
+	transition: 0.25s;
+	margin: -2px 8px 0 0;
+
+	&::before {
+		content: '';
+		width: 8px;
+		height: 8px;
+		opacity: 0;
+		background: $color-primary;
+		transition: 0.25s;
+		transform: scale(0);
+	}
+
+	.checkbox__input:checked + & {
+		&::before {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+}

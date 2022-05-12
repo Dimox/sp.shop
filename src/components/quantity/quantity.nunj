@@ -1,0 +1,17 @@
+{% from "../../components/icon/icon.nunj" import icon %}
+
+<div class="quantity">
+	<button class="quantity__minus" type="button" aria-label="-1">
+		{{ icon({
+			iconName: 'minus',
+			attributes: 'width="21" height="20"'
+		}) }}
+	</button>
+	<div class="quantity__number">1</div>
+	<button class="quantity__plus" type="button" aria-label="+1">
+		{{ icon({
+			iconName: 'plus',
+			attributes: 'width="21" height="20"'
+		}) }}
+	</button>
+</div>

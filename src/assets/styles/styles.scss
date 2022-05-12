@@ -5,11 +5,22 @@
 @import 'reset';
 @import 'global';
 @import 'layout';
-// @import 'controls';
+@import 'controls';
 
 // ======= COMPONENTS =======
 @import '../../components/header/header';
+@import '../../components/menu/menu';
 @import '../../components/button/button';
+@import '../../components/billing/billing';
+@import '../../components/steps/steps';
+@import '../../components/radio/radio';
+@import '../../components/checkbox/checkbox';
+@import '../../components/card/card';
+@import '../../components/sidebar/sidebar';
+@import '../../components/basket/basket';
+@import '../../components/promo-code/promo-code';
+@import '../../components/amount/amount';
+@import '../../components/quantity/quantity';
 
 // ======= PAGES =======
 @import 'pages/main';

@@ -1,4 +1,45 @@
 .header {
-	padding: 20px 0;
-	background: #ccc;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 22px 30px;
+	border-bottom: 1px solid $color-gray;
+}
+
+.header__logo {
+	margin: 4px 0 -4px;
+}
+
+.header__buttons {
+	display: flex;
+	padding: 9px 0 0;
+}
+
+.header__cart {
+	display: inline-flex;
+	margin: 2px 0 0 26px;
+}
+
+.header__cart-counter {
+	background: $color-primary;
+	color: $color-white;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	font-size: 10px;
+	line-height: 13px;
+	margin: -6px 0 0 -7px;
+
+	&.hidden {
+		opacity: 0;
+	}
+}
+
+.header__burger {
+	display: none;
+	margin: 2px 0 0 26px;
+
+	@include max-screen(1199px) {
+		display: block;
+	}
 }

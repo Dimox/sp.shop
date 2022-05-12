@@ -1,0 +1,15 @@
+<sidebar class="sidebar">
+
+	{{ basket({
+		className: 'sidebar__section'
+	}) }}
+
+	{{ promoCode({
+		className: 'sidebar__section'
+	}) }}
+
+	{{ amount({
+		className: 'sidebar__section'
+	}) }}
+
+</sidebar>

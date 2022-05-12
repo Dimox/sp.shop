@@ -1,0 +1,98 @@
+.steps {
+	max-width: 1104px;
+	margin: 0 auto 60px;
+	display: flex;
+	justify-content: space-between;
+	counter-reset: number;
+	overflow: hidden;
+
+	@include max-screen(1639px) {
+		max-width: 91%;
+	}
+}
+
+.steps__item {
+	position: relative;
+	text-align: center;
+
+	&::before {
+		counter-increment: number;
+		content: counter(number);
+		display: block;
+		width: 18px;
+		height: 18px;
+		text-align: center;
+		line-height: 16px;
+		font-size: 10px;
+		margin: 0 auto 10px;
+		border: 1px solid $color-gray-light;
+		font-weight: 500;
+		color: $color-gray-light;
+		border-radius: 50%;
+		background: $color-white;
+		position: relative;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		top: 9px;
+		left: 35%;
+		width: 50vw;
+		height: 1px;
+		display: block;
+		background: $color-primary;
+	}
+
+	&:last-child {
+		&::after {
+			background: $color-white;
+		}
+	}
+
+	&:nth-child(2) {
+		@include max-screen(1639px) {
+			padding-right: 22px;
+		}
+
+		@include max-screen(1199px) {
+			padding-right: 30px;
+		}
+	}
+
+	&:nth-child(3) {
+		padding-right: 12px;
+
+		@include max-screen(1639px) {
+			padding-right: 42px;
+		}
+
+		@include max-screen(1199px) {
+			padding-right: 38px;
+		}
+	}
+
+	&:nth-child(4) {
+		padding-right: 4px;
+	}
+
+	&--filled {
+		&::before {
+			background: $color-primary;
+			border-color: $color-primary;
+			color: $color-white;
+		}
+	}
+
+	&--active {
+		&::before {
+			border-color: $color-primary;
+			color: $color-black;
+		}
+
+		&::after {
+			background: $color-gray-light;
+		}
+	}
+}

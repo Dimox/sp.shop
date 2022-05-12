@@ -89,6 +89,11 @@ const utils = {
 		return result;
 	},
 
+	parseNumberFromString(string) {
+		const number = parseFloat(string.replace(/\s/g, ''));
+		return number;
+	},
+
 	declOfNum(number, titles) {
 		const cases = [2, 0, 1, 1, 1, 2];
 		return titles[

@@ -1,6 +1,0 @@
-<ol class="steps">
-	<li class="steps__item steps__item--filled">Account</li>
-	<li class="steps__item steps__item--filled">Shipping</li>
-	<li class="steps__item steps__item--active">Billing</li>
-	<li class="steps__item">Review</li>
-</ol>
